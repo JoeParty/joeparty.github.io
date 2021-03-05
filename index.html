@@ -1,38 +1,46 @@
-
-
 <!DOCTYPE html>
 <html>
-<title>GARRETH</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<style>
-.mySlides {display:none;}
-</style>
 <body>
 
+<h2>How many Poppadoms does Rosco owe?</h2>
 
-<div class="w3-content w3-section">
- <img class="mySlides" src="IMG-20160714-WA0001.jpg" style="width:100%">
-<img class="mySlides" src="IMG-20160714-WA0002.jpg" style="width:100%">
-<img class="mySlides" src="IMG-20160714-WA0003.jpg" style="width:100%">
-</div>
+Poppadom Counter
+<table>
+<tr>
 
+ <td>Start Date</td><td> <p id="startdate"></p></td>
+</tr>
+<tr><td>Todays Date</td>
+<td>
+<p id="todaydate"></p>
+</td>
+</tr>
+<tr>
+<td>
+<p id="result"></p>
+</td>
+</tr>
+</table>
 <script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 2000); // Change image every 2 seconds
+var startDate = new Date(2020, 7, 12);
+var today = new Date();
+document.getElementById("startdate").innerHTML = startDate.toDateString() ;
+document.getElementById("todaydate").innerHTML = today.toDateString() ;
+var difference = today - startDate;
+var days = difference / 1000 / 60 / 60 / 24;
+var weeks = parseInt(days / 7);	
+var messaged = "";
+if (weeks < 1) {
+  message = "no weeks have passed";
+} else {
+  message = "Total Poppadoms owed: <b>" + weeks + "</b>";
 }
-</script>
+document.getElementById("result").innerHTML = message;
+</script> 
+
+
+
+
 
 </body>
 </html>
